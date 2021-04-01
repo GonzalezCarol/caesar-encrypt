@@ -1,0 +1,88 @@
+const data = [
+  {
+    numero_casas: 11,
+    token: "5806d4f485755b689b5677d1a1b0304ee5c2e606",
+    cifrado: "ulgl td ez ulgldnctae hsle nlc td ez nlcape. nsctd sptwxlyy",
+    decifrado: "",
+    resumo_criptografico: "",
+  },
+];
+// const parsedJson = JSON.parse(data);
+
+const alphabetic = {
+  a: { id: 1, chact: "a" },
+  b: { id: 2, chact: "b" },
+  c: { id: 3, chact: "c" },
+  d: { id: 4, chact: "d" },
+  e: { id: 5, chact: "e" },
+  f: { id: 6, chact: "f" },
+  g: { id: 7, chact: "g" },
+  h: { id: 8, chact: "h" },
+  i: { id: 9, chact: "i" },
+  j: { id: 10, chact: "j" },
+  k: { id: 11, chact: "k" },
+  l: { id: 12, chact: "l" },
+  m: { id: 13, chact: "m" },
+  n: { id: 14, chact: "n" },
+  o: { id: 15, chact: "o" },
+  p: { id: 16, chact: "p" },
+  q: { id: 17, chact: "q" },
+  r: { id: 18, chact: "r" },
+  s: { id: 19, chact: "s" },
+  t: { id: 20, chact: "t" },
+  u: { id: 21, chact: "u" },
+  v: { id: 22, chact: "v" },
+  w: { id: 23, chact: "w" },
+  x: { id: 24, chact: "x" },
+  y: { id: 25, chact: "y" },
+  z: { id: 26, chact: "z" },
+};
+
+// const alphabetic = {
+//       1: {chact: "a" },
+//       2: {chact: "b" },
+//       3: {chact: "c" },
+//       4: {chact: "d" },
+//       5: {chact: "e" },
+//       6: {chact: "f" },
+//       7: {chact: "g" },
+//       8: {chact: "h" },
+//       9: {chact: "i" },
+//       10: {chact: "j" },
+//       11: {chact: "k" },
+//       12: {chact: "l" },
+//       13: {chact: "m" },
+//       14: {chact: "n" },
+//       15: {chact: "o" },
+//       16: {chact: "p" },
+//       17: {chact: "q" },
+//       18: {chact: "r" },
+//       19: {chact: "s" },
+//       20: {chact: "t" },
+//       21: {chact: "u" },
+//       22: {chact: "v" },
+//       23: {chact: "w" },
+//       24: {chact: "x" },
+//       25: {chact: "y" },
+//       26: {chact: "z" },
+//     };
+
+//!  ---------------------------  correct
+const cesareEncriptyArray = data.map((cesareEncripty) => {
+  const splitedCesareData = cesareEncripty.cifrado.split("");
+  // console.log(cesareEncripty.cifrado)
+  const joinedNewCesareData = splitedCesareData.map((wichWord) => {
+    if (alphabetic[wichWord]) {
+      const nrCasas = alphabetic[wichWord].id + 10;
+      if (alphabetic.id == alphabetic[wichWord].id + 10) {
+        console.log(alphabetic.chact);
+      }
+      return nrCasas;
+    } else return "";
+  });
+
+  console.log(
+    "preciso atraves desse id, achar a letra correspondente",
+    joinedNewCesareData
+  );
+});
