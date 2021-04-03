@@ -27,7 +27,7 @@ const countBreeds = async () => {
       const answerJson = require("./answer.json");
 
       fs.writeFile("answer.json", dataDecripty, function (err) {
-        answerJson["resumo_criptografico"] = dataDecripty;
+        // answerJson["resumo_criptografico"] = dataDecripty;
         if (err) throw err;
         console.log("File updated successfully.");
       });
