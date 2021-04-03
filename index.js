@@ -1,19 +1,38 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const app = express();
-const port = 3000;
+const axios = require("axios");
+const decriptyCaesar = require("./DecriptyCaesar");
+const fs = require("fs");
 
-app.use(bodyParser.json());
+const getDataFromCaesarCrypt = async () => {
+  try {
+    return await axios.get(
+      "https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=5806d4f485755b689b5677d1a1b0304ee5c2e606"
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-app.get("/", (req, res) => {
-  res.json({ message: "hello world!" });
-});
+const countBreeds = async () => {
+  const dataCaesarCrypt = await getDataFromCaesarCrypt();
+  const jsonDataEncript = JSON.stringify(dataCaesarCrypt.data);
 
-app.post("/hello", (req, res) => {
-  const name = req.body.name;
-  res.json(`Nome recebido ${name}`);
-});
+  if (fs.existsSync("answer.json")) {
+    console.log("File exist");
+  } else {
+    fs.writeFile("answer.json", jsonDataEncript, function (err) {
+      if (err) throw err;
+      // console.log("File is created successfully.");
 
-app.listen(port, () => {
-  console.log(`listening ${port}`);
-});
+      const dataDecripty = JSON.stringify(decriptyCaesar());
+      const answerJson = require("./answer.json");
+
+      fs.writeFile("answer.json", dataDecripty, function (err) {
+        answerJson["resumo_criptografico"] = dataDecripty;
+        if (err) throw err;
+        console.log("File updated successfully.");
+      });
+    });
+  }
+};
+
+countBreeds();
