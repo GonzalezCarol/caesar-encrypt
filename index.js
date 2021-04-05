@@ -1,5 +1,6 @@
 const axios = require("axios");
 const decriptyCaesar = require("./DecriptyCaesar");
+const crypto = require("crypto");
 const fs = require("fs");
 
 const getDataFromCaesarCrypt = async () => {
@@ -21,13 +22,18 @@ const countBreeds = async () => {
   } else {
     fs.writeFile("answer.json", jsonDataEncript, function (err) {
       if (err) throw err;
-      // console.log("File is created successfully.");
 
-      const dataDecripty = JSON.stringify(decriptyCaesar());
-      const answerJson = require("./answer.json");
+      const dataDecripty = decriptyCaesar();
+      dataCaesarCrypt.data.decifrado = dataDecripty;
+      const sha1Cript = crypto
+        .createHash("sha1")
+        .update(dataDecripty)
+        .digest("base64");
 
-      fs.writeFile("answer.json", dataDecripty, function (err) {
-        // answerJson["resumo_criptografico"] = dataDecripty;
+      dataCaesarCrypt.data.resumo_criptografico = sha1Cript;
+      const jsonString = JSON.stringify(dataCaesarCrypt.data);
+
+      fs.writeFile("answer.json", jsonString, function (err) {
         if (err) throw err;
         console.log("File updated successfully.");
       });
