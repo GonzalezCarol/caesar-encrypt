@@ -26,7 +26,7 @@ const alphabetic = [
   "y",
   "z",
 ];
-/* 
+/* !
     Caesar decript logic
     quantidadeDeCasas
     quantidadeLetrasAlfabeto = 26
@@ -38,9 +38,9 @@ module.exports = function DecriptyCaesar() {
   var dataJsonAnswer = [];
   dataJsonAnswer.push(require("./answer.json"));
 
-  const caesarDecriptyArray = dataJsonAnswer.map((caesarEncripty) => {
-    const decimalPlaces = caesarEncripty.numero_casas;
-    const splitedcaesardataJsonAnswer = caesarEncripty.cifrado.split("");
+  const caesarDecriptyArray = dataJsonAnswer.map((caesarEncrypt) => {
+    const decimalPlaces = caesarEncrypt.numero_casas;
+    const splitedcaesardataJsonAnswer = caesarEncrypt.cifrado.split("");
     const amountOfLettersAlphab = 26;
 
     const decriptMessageCaesar = splitedcaesardataJsonAnswer.map(
